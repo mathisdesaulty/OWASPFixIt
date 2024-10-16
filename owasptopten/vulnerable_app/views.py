@@ -9,3 +9,8 @@ def vulnerable_function(request):
     # Exemple de faille : injection SQL
     # Imaginons que tu interroges la base de données ici sans validation
     return HttpResponse(f"Tu as entré : {user_input}")
+
+
+
+def home(request):
+    return render(request, 'accueil_choice.html')

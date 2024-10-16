@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'vulnerable_app',  # Ajoute ta première application ici
+    'fixed_app',      # Si tu as une application pour les versions corrigées
+
 ]
 
 MIDDLEWARE = [
@@ -54,7 +57,7 @@ ROOT_URLCONF = 'owasptopten.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],  # Répertoire pour les templates personnalisés
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -66,7 +69,6 @@ TEMPLATES = [
         },
     },
 ]
-
 WSGI_APPLICATION = 'owasptopten.wsgi.application'
 
 
