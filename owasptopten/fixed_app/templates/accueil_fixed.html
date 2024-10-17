@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vulnérabilités OWASP - Version Corrigée</title>
+</head>
+<body>
+    <h1>Vulnérabilités OWASP - Version Corrigée</h1>
+    <button onclick="location.href='{% url 'sql_injection_fixed' %}'">Injection SQL</button>
+    <button onclick="location.href='{% url 'xss_fixed' %}'">Cross-Site Scripting (XSS)</button>
+    <button onclick="location.href='{% url 'sensitive_data_fixed' %}'">Sensitive Data Exposure</button>
+    <button onclick="location.href='{% url 'auth_fixed' %}'">Broken Authentication</button>
+    <button onclick="location.href='{% url 'config_fixed' %}'">Security Misconfiguration</button>
+</body>
+</html>

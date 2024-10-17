@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vulnérabilités OWASP - Version Vulnérable</title>
+</head>
+<body>
+    <h1>Vulnérabilités OWASP - Version Vulnérable</h1>
+    <button onclick="location.href='{% url 'sql_injection_vulnerable' %}'">Injection SQL</button>
+    <button onclick="location.href='{% url 'xss_vulnerable' %}'">Cross-Site Scripting (XSS)</button>
+    <button onclick="location.href='{% url 'sensitive_data_vulnerable' %}'">Sensitive Data Exposure</button>
+    <button onclick="location.href='{% url 'auth_vulnerable' %}'">Broken Authentication</button>
+    <button onclick="location.href='{% url 'config_vulnerable' %}'">Security Misconfiguration</button>
+</body>
+</html>
