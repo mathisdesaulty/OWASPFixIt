@@ -9,7 +9,18 @@ def home(request):
     return render(request, 'accueil_choice.html')
 
 def sql_injection_vulnerable(request):
-    return render(request, 'sql_injection_vulnerable.html')
+    results = []
+    query = ""
+    
+    if request.method == 'POST':
+        search_query = request.POST.get('search', '')
+        query = f"SELECT * FROM fixed_app_product WHERE name LIKE '{search_query}'"
+        
+        with connection.cursor() as cursor:
+            cursor.execute(query)
+            results = cursor.fetchall()
+    
+    return render(request, 'sql_injection_vulnerable.html', {'results': results, 'query': query})
 
 def xss_vulnerable(request):
     return render(request, 'xss_vulnerable.html')

@@ -7,6 +7,22 @@
 </head>
 <body>
     <h1>SQL Injection Fixed</h1>
-    <p>This page demonstrates a fix for SQL Injection vulnerabilities.</p>
+    <form method="post" action="">
+        {% csrf_token %}
+        <label for="search">Search:</label>
+        <input type="text" id="search" name="search" value="{{ query }}">  <!-- Display the search query in the input -->
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if query %}
+        <h2>Search results for "{{ query }}":</h2>
+        <ul>
+            {% for result in results %}
+                <li>{{ result }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h2>No search has been made yet.</h2>
+    {% endif %}
 </body>
 </html>

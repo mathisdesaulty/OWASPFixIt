@@ -7,10 +7,20 @@
 </head>
 <body>
     <h1>SQL Injection Vulnerable Page</h1>
-    <form method="post" action="/search">
+    <form method="post" action="">
+        {% csrf_token %}
         <label for="search">Search:</label>
         <input type="text" id="search" name="search">
         <button type="submit">Submit</button>
     </form>
+
+    {% if query %}
+        <h2>Search results for "{{ query }}":</h2>
+        <ul>
+            {% for result in results %}
+                <li>{{ result }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 </body>
 </html>
