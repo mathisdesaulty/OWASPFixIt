@@ -9,4 +9,5 @@ urlpatterns = [
     path('sensitive-data/', views.sensitive_data_vulnerable, name='sensitive_data_vulnerable'),
     path('auth/', views.auth_vulnerable, name='auth_vulnerable'),
     path('config/', views.config_vulnerable, name='config_vulnerable'),
+    path('sensitive-data-exposure/', views.sensitive_data_exposure, name='sensitive_data_exposure'),
 ]

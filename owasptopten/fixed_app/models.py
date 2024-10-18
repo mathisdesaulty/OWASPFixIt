@@ -1,4 +1,5 @@
 from django.db import models
+import json
 
 # Create your models here.
 class Product(models.Model):
@@ -8,3 +9,10 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+    
+class User(models.Model):
+    username = models.CharField(max_length=100)
+    password = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.username

@@ -1,6 +1,9 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.db import connection
+from django.http import JsonResponse
+from django.http import JsonResponse
+from vulnerable_app.models import User
 
 def vulnerable_function(request):
     return render(request, 'accueil_vulnerable.html')
@@ -38,6 +41,28 @@ def xss_vulnerable(request):
 
 def sensitive_data_vulnerable(request):
     return render(request, 'sensitive_data_vulnerable.html')
+
+
+
+def sensitive_data_exposure(request):
+    # Récupérer tous les utilisateurs depuis la base de données
+    users = User.objects.all()
+
+    # Journaliser le nombre d'utilisateurs récupérés (pour déboguer)
+    print(f"Nombre d'utilisateurs récupérés : {users.count()}")
+
+    # Si la liste est vide, ajouter un message pour vérifier
+    if not users.exists():
+        return JsonResponse({"error": "No users found"}, status=404)
+
+    # Formatage des données utilisateur pour l'affichage JSON
+    user_data = [{"username": user.username, "password": user.password} for user in users]
+
+    # Journaliser les données utilisateur (pour déboguer)
+    print(f"Données utilisateur : {user_data}")
+
+    # Retourner une réponse JSON avec les données des utilisateurs
+    return JsonResponse(user_data, safe=False)
 
 def auth_vulnerable(request):
     return render(request, 'auth_vulnerable.html')
