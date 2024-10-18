@@ -22,11 +22,16 @@ def sql_injection_vulnerable(request):
     
     return render(request, 'sql_injection_vulnerable.html', {'results': results, 'query': query})
 
+from django.shortcuts import render
+
 def xss_vulnerable(request):
     comment = "" 
 
+    # Récupérer le commentaire depuis les paramètres d'URL
     if request.method == 'POST':
         comment = request.POST.get('comment', '') 
+    else:
+        comment = request.GET.get('comment', '')
 
     return render(request, 'xss_vulnerable.html', {'comment': comment})
 

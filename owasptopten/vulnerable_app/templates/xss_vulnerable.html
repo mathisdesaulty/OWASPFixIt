@@ -31,11 +31,10 @@
             }
         }
     </script>
-
 </head>
 <body>
     <h1>Submit a Comment</h1>
-    <button class="toggle-button" onclick="toggleExplanation()">How to use a XSS vulnerability ?</button>
+    <button class="toggle-button" onclick="toggleExplanation()">How to use a XSS vulnerability?</button>
     <div id="explanation" class="explanation">
         <h3>Understanding XSS (Cross-Site Scripting)</h3>
         <p>
@@ -54,6 +53,11 @@
         </p>
         <p>
             <strong>Why it works?</strong> This page is intentionally vulnerable to XSS because we have deactivated Django's automatic escaping by using the filter "safe" that you can see <a href="https://docs.djangoproject.com/en/stable/ref/templates/builtins/#safe" target="_blank">here</a>.
+        </p>
+        <p> 
+            <strong>Or use the URL !</strong> You can try for example :<code>http://127.0.0.1:8000/xss?comment=&lt;script&gt;alert(&#39;XSS Attack!&#39;);&lt;/script&gt;</code>
+            <br>
+            <p>This is an other way to use XSS vulnerability !</p>
         </p>
     </div>
     <form method="post" action="">
