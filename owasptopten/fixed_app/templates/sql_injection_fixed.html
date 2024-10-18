@@ -4,9 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SQL Injection Fixed</title>
+    <style>
+        /* Simple styling for the explanation section */
+        .explanation {
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 20px;
+            display: none; /* Initially hidden */
+        }
+
+        .toggle-button {
+            cursor: pointer;
+            color: #007BFF;
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        // Function to toggle the explanation visibility
+        function toggleExplanation() {
+            var explanationDiv = document.getElementById('explanation');
+            if (explanationDiv.style.display === 'none') {
+                explanationDiv.style.display = 'block';
+            } else {
+                explanationDiv.style.display = 'none';
+            }
+        }
+    </script>
 </head>
 <body>
     <h1>SQL Injection Fixed</h1>
+
     <form method="post" action="">
         {% csrf_token %}
         <label for="search">Search:</label>
@@ -24,5 +52,41 @@
     {% else %}
         <h2>No search has been made yet.</h2>
     {% endif %}
+
+     
+    <button class="toggle-button" onclick="toggleExplanation()">How does it work?</button>
+    <div id="explanation" class="explanation">
+        <h3>How the Fixed Version Works</h3>
+        <p>
+            In this fixed version, we prevent SQL injection attacks by using parameterized queries. 
+            This means we do not directly concatenate user input into the SQL statement.
+        </p>
+        <p>
+            Here's how it works step by step:
+        </p>
+        <ol>
+            <li>
+                The user inputs a search term in the search box.
+            </li>
+            <li>
+                We perform a simple validation check to ensure that the input does not contain 
+                any potentially harmful characters such as <code>;</code>, <code>'</code>, or <code>"</code>.
+                If such characters are detected, an error message is returned: <code>Invalid search query!</code>.
+            </li>
+            <li>
+                If the input is valid, we construct the SQL query using a placeholder: 
+                <code>SELECT * FROM fixed_app_product WHERE name LIKE %s</code>.
+            </li>
+            <li>
+                Finally, we execute the query using the cursor's <code>execute</code> method, passing the 
+                search term as a separate argument: <code>cursor.execute(query, [f'%{search_query}%'])</code>.
+                This ensures that the user input is treated as data and not executable SQL code.
+            </li>
+        </ol>
+        <p>
+            By following this method, we protect our application from SQL injection attacks effectively.
+        </p>
+    </div>
+
 </body>
 </html>

@@ -4,9 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SQL Injection Vulnerable Page</title>
+    <style>
+        /* Simple styling for the explanation section */
+        .explanation {
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 20px;
+            display: none; /* Initially hidden */
+        }
+
+        .toggle-button {
+            cursor: pointer;
+            color: #007BFF;
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        // Function to toggle the explanation visibility
+        function toggleExplanation() {
+            var explanationDiv = document.getElementById('explanation');
+            if (explanationDiv.style.display === 'none') {
+                explanationDiv.style.display = 'block';
+            } else {
+                explanationDiv.style.display = 'none';
+            }
+        }
+    </script>
 </head>
 <body>
     <h1>SQL Injection Vulnerable Page</h1>
+    <p>Figure out what you have to enter to display the whole database.</p>
     <form method="post" action="">
         {% csrf_token %}
         <label for="search">Search:</label>
@@ -15,12 +43,27 @@
     </form>
 
     {% if query %}
-        <h2>Search results for "{{ query }}":</h2>
+        <h2>Search results for " {{ query }} ":</h2>
         <ul>
             {% for result in results %}
                 <li>{{ result }}</li>
             {% endfor %}
         </ul>
     {% endif %}
+
+    <button class="toggle-button" onclick="toggleExplanation()">See the answer and understand how it works</button>
+    <div id="explanation" class="explanation">
+        <h3>Understanding SQL Injection</h3>
+        <p>
+            SQL Injection is a code injection technique that exploits a vulnerability in an application's software by manipulating 
+            SQL queries. This occurs when user input is not properly sanitized and is directly included in SQL statements. 
+            Attackers can input specially crafted SQL statements to trick the database into revealing or altering data. 
+        </p>
+        <p>
+            For example, entering <code>' OR '1'='1'</code> as input can manipulate the SQL query to return all rows from a table 
+            instead of just the intended results. It's essential to validate and sanitize user inputs to prevent such attacks.
+        </p>
+    </div>
+
 </body>
 </html>
