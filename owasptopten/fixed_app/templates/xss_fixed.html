@@ -3,10 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XSS Fixed Page</title>
+    <title>XSS Vulnerable Page</title>
+    <style>
+        /* Simple styling for the explanation section */
+        .explanation {
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 20px;
+            display: none; /* Initially hidden */
+        }
+
+        .toggle-button {
+            cursor: pointer;
+            color: #007BFF;
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        // Function to toggle the explanation visibility
+        function toggleExplanation() {
+            var explanationDiv = document.getElementById('explanation');
+            if (explanationDiv.style.display === 'none') {
+                explanationDiv.style.display = 'block';
+            } else {
+                explanationDiv.style.display = 'none';
+            }
+        }
+    </script>
+
 </head>
 <body>
-    <h1>Welcome to the XSS Fixed Page</h1>
-    <p>This is a simple page to demonstrate XSS protection.</p>
+    <h1>Submit a Comment</h1>
+    <button class="toggle-button" onclick="toggleExplanation()">How to use a XSS vulnerability ?</button>
+    <div id="explanation" class="explanation">
+        <h3>Solving XSS (Cross-Site Scripting)</h3>
+        <p>
+            <strong>How it is fixed?</strong> This page is now protected against XSS because we are using Django's automatic escaping feature, which ensures that any user input is properly escaped before being rendered in the browser.
+        </p>
+    </div>
+    <form method="post" action="">
+        {% csrf_token %}
+        <label for="comment">Comment:</label>
+        <input type="text" id="comment" name="comment">
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if comment %}
+        <h2>Your comment: {{ comment }}</h2> <!-- Vulnérable si non échappé -->
+    {% endif %}
 </body>
 </html>

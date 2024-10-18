@@ -23,7 +23,13 @@ def sql_injection_vulnerable(request):
     return render(request, 'sql_injection_vulnerable.html', {'results': results, 'query': query})
 
 def xss_vulnerable(request):
-    return render(request, 'xss_vulnerable.html')
+    comment = "" 
+
+    if request.method == 'POST':
+        comment = request.POST.get('comment', '') 
+
+    return render(request, 'xss_vulnerable.html', {'comment': comment})
+
 
 def sensitive_data_vulnerable(request):
     return render(request, 'sensitive_data_vulnerable.html')

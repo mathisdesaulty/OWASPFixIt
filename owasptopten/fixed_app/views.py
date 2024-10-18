@@ -28,7 +28,12 @@ def sql_injection_fixed(request):
     return render(request, 'sql_injection_fixed.html', {'results': results, 'query': search_query})  # Pass search_query instead of the SQL query
 
 def xss_fixed(request):
-    return render(request, 'xss_fixed.html')
+    comment = "" 
+
+    if request.method == 'POST':
+        comment = request.POST.get('comment', '') 
+        
+    return render(request, 'xss_fixed.html', {'comment': comment})
 
 def sensitive_data_fixed(request):
     return render(request, 'sensitive_data_fixed.html')
