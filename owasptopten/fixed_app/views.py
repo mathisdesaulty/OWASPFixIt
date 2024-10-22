@@ -51,9 +51,6 @@ def auth_fixed(request):
 def config_fixed(request):
     return render(request, 'config_fixed.html')
 
-def login(request):
-    return render(request, 'login.html')
-
 @login_required(login_url='/login/')
 def sensitive_data_exposure(request):
     if not request.user.is_superuser:
