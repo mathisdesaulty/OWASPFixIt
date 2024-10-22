@@ -8,9 +8,6 @@ from vulnerable_app.models import User
 def vulnerable_function(request):
     return render(request, 'accueil_vulnerable.html')
 
-def home(request):
-    return render(request, 'accueil_choice.html')
-
 def sql_injection_vulnerable(request):
     results = []
     query = ""

@@ -1,3 +1,4 @@
+<!-- vulnerable_app/templates/accueil_vulnerable.html -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -30,5 +31,12 @@
     <a href="{% url 'fixed_accueil' %}">
         <button>Fixed</button>
     </a>
+    <a href="{% url 'login' %}">
+        <button>Login</button>
+    </a>
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
 </body>
 </html>

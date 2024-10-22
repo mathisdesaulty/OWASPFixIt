@@ -2,8 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('vulnerable/', views.vulnerable_function, name='vulnerable_function'),
+    path('', views.vulnerable_function, name='vulnerable_function'),
     path('sql-injection/', views.sql_injection_vulnerable, name='sql_injection_vulnerable'),
     path('xss/', views.xss_vulnerable, name='xss_vulnerable'),
     path('sensitive-data/', views.sensitive_data_vulnerable, name='sensitive_data_vulnerable'),
