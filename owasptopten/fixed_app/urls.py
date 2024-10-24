@@ -8,7 +8,7 @@ urlpatterns = [
     path('sql-injection/', views.sql_injection_fixed, name='sql_injection_fixed'),
     path('xss/', views.xss_fixed, name='xss_fixed'),
     path('sensitive-data/', views.sensitive_data_fixed, name='sensitive_data_fixed'),
-    path('auth/', views.auth_fixed, name='auth_fixed'),
+    path('upload_xml_fixed/', views.upload_xml_fixed, name='upload_xml_fixed'),
     path('config/', views.config_fixed, name='config_fixed'),
     path('sensitive-data-exposure/', views.sensitive_data_exposure, name='sensitive_data_exposure'),
     # path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),

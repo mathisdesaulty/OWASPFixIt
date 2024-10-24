@@ -1,3 +1,5 @@
+from io import BytesIO
+from lxml import etree
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.db import connection
@@ -61,8 +63,26 @@ def sensitive_data_exposure(request):
     # Retourner une réponse JSON avec les données des utilisateurs
     return JsonResponse(user_data, safe=False)
 
-def auth_vulnerable(request):
-    return render(request, 'auth_vulnerable.html')
+def upload_xml_vulnerable(request):
+    if request.method == 'POST' and request.FILES.get('xmlfile'):
+        xml_file = request.FILES['xmlfile']
+        try:
+            # Lire le contenu du fichier uploadé
+            xml_content = xml_file.read()
+
+            # Créer un parser XML vulnérable aux XXE
+            parser = etree.XMLParser(load_dtd=True, no_network=False)  # Activer les entités externes
+            tree = etree.parse(BytesIO(xml_content), parser)  # Parser le contenu du fichier
+            root = tree.getroot()
+
+            # Retourner le contenu XML parsé ou l'entité externe
+            return HttpResponse(f'XML Parsed Successfully: {etree.tostring(root)}')
+
+        except etree.XMLSyntaxError as e:
+            return HttpResponse(f"An error occurred: {str(e)}", status=400)
+
+    return render(request, 'upload_xml.html')
+
 
 def config_vulnerable(request):
     return render(request, 'config_vulnerable.html')

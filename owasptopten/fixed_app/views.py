@@ -1,3 +1,5 @@
+from defusedxml.lxml import fromstring
+from lxml import etree
 from django.contrib.sessions.models import Session
 from datetime import timezone
 from django.http import HttpResponse, JsonResponse
@@ -45,8 +47,28 @@ def xss_fixed(request):
 def sensitive_data_fixed(request):
     return render(request, 'sensitive_data_fixed.html')
 
-def auth_fixed(request):
-    return render(request, 'auth_fixed.html')
+
+def upload_xml_fixed(request):
+    if request.method == 'POST' and request.FILES.get('xmlfile'):
+        xml_file = request.FILES['xmlfile']
+        try:
+            # Lire le contenu du fichier uploadé
+            xml_content = xml_file.read()
+
+            # Utiliser defusedxml pour parser le XML en toute sécurité
+            root = fromstring(xml_content)  # On ne fait pas appel à getroot() ici
+
+            # Récupérer le contenu de l'élément
+            response_content = etree.tostring(root, encoding='unicode')  # Convertir l'élément en chaîne
+
+            return HttpResponse(f'XML Parsed Successfully: {response_content}')
+
+        except etree.XMLSyntaxError as e:
+            return HttpResponse(f"etree.XMLSyntaxError error occurred: {str(e)}", status=400)
+        except Exception as e:
+            return HttpResponse(f"Usage of malicious XML", status=500)
+
+    return render(request, 'upload_xml_fixed.html')
 
 def config_fixed(request):
     return render(request, 'config_fixed.html')

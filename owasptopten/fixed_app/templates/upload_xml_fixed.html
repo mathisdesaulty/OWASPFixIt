@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload XML File</title>
+</head>
+<body>
+    <h2>Upload a malicious XML</h2>
+    <p>Try to upload the same XML files as the vulnerable page, but with fixed, and see what happens!</p>
+    <form action="{% url 'upload_xml_fixed' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="xmlfile">
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
