@@ -3,10 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Page</title>
+    <title>SQL Injection Vulnerable Page</title>
+    <style>
+        /* Simple styling for the explanation section */
+        .explanation {
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 20px;
+            display: none; /* Initially hidden */
+        }
+
+        .toggle-button {
+            cursor: pointer;
+            color: #007BFF;
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        // Function to toggle the explanation visibility
+        function toggleExplanation() {
+            var explanationDiv = document.getElementById('explanation');
+            if (explanationDiv.style.display === 'none') {
+                explanationDiv.style.display = 'block';
+            } else {
+                explanationDiv.style.display = 'none';
+            }
+        }
+    </script>
 </head>
 <body>
     <h1>Welcome to the Vulnerable App</h1>
-    <p>This is a simple page demonstrating sensitive data exposure vulnerability.</p>
+    <p>There is a page on this site that allows you to get all the passwords of all users. To find the name, you don't have to look further than the name of the current vulnerability.</p>
+    <button class="toggle-button" onclick="toggleExplanation()">See the answer and understand how it works</button>
+    <div id="explanation" class="explanation">
+        <h3>Response...</h3>
+        <p>
+            go to <a href="http://127.0.0.1:8000/vulnerable/sensitive-data-exposure/">this page</a> and you will find the answer.
+        </p>
+        </p>
+    </div>
 </body>
 </html>
