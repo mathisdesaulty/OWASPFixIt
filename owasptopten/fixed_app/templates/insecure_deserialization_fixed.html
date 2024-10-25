@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Config Vulnerable - Insecure Deserialization</title>
+</head>
+<body>
+    <h1>Welcome to the Fixed App - Insecure Deserialization</h1>
+    <p>This is a simple page to demonstrate the insecure deserialization of a fixed app.</p>
+    <p>
+        Here we use a JSON file to demonstrate that their usage, even coming from picklejson, 
+        is more secure than pkl files.
+    </p>
+    <form action="{% url 'insecure_deserialization_fixed' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="jsonfile" accept=".json">
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

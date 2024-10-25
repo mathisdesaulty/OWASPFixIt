@@ -7,6 +7,6 @@ urlpatterns = [
     path('xss/', views.xss_vulnerable, name='xss_vulnerable'),
     path('sensitive-data/', views.sensitive_data_vulnerable, name='sensitive_data_vulnerable'),
     path('upload_xml_vulnerable/', views.upload_xml_vulnerable, name='upload_xml_vulnerable'),
-    path('config/', views.config_vulnerable, name='config_vulnerable'),
+    path('insecure_deserialization_vulnerable/', views.insecure_deserialization_vulnerable, name='insecure_deserialization_vulnerable'),
     path('sensitive-data-exposure/', views.sensitive_data_exposure, name='sensitive_data_exposure'),
 ]

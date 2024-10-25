@@ -5,7 +5,7 @@
     <title>Upload XML File</title>
 </head>
 <body>
-    <h2>Upload a malicious XML</h2>
+    <h1>Welcome to the Fixed App - XXE</h1>
     <p>Try to upload the same XML files as the vulnerable page, but with fixed, and see what happens!</p>
     <form action="{% url 'upload_xml_fixed' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}

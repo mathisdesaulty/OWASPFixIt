@@ -1,3 +1,4 @@
+import jsonpickle
 from defusedxml.lxml import fromstring
 from lxml import etree
 from django.contrib.sessions.models import Session
@@ -70,8 +71,24 @@ def upload_xml_fixed(request):
 
     return render(request, 'upload_xml_fixed.html')
 
-def config_fixed(request):
-    return render(request, 'config_fixed.html')
+def insecure_deserialization_fixed(request):
+    if request.method == 'POST' and request.FILES.get('jsonfile'):
+        json_file = request.FILES['jsonfile']
+        try:
+            # Lire le contenu du fichier uploadé
+            json_content = json_file.read().decode('utf-8')
+
+            # Désérialiser le contenu JSON
+            data = jsonpickle.decode(json_content)
+            
+            # Traitement des données désérialisées
+            return HttpResponse(f'JSON Data Processed: {data}')
+
+        except jsonpickle.JsonPickleException as e:
+            return HttpResponse(f"An error occurred: {str(e)}", status=400)
+        except Exception as e:
+            return HttpResponse(f"An error occurred while processing: {str(e)}", status=500)
+    return render(request, 'insecure_deserialization_fixed.html')
 
 @login_required(login_url='/login/')
 def sensitive_data_exposure(request):

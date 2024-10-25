@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Config Vulnerable - Insecure Deserialization</title>
+</head>
+<body>
+    <h1>Welcome to the Vulnerable App - Insecure Deserialization</h1>
+    <p>This is a simple page to demonstrate the insecure deserialization of a vulnerable app.</p>
+    <p>
+        You can see that here we are using a pkl file from Python's native pickle module. 
+        These files are not secure at all and can be used to execute malicious code during deserialization.
+    </p>
+    
+    <!-- Formulaire pour uploader un fichier pickle -->
+    <form action="{% url 'insecure_deserialization_vulnerable' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="picklefile">Upload a Pickle file (.pkl):</label>
+        <input type="file" name="picklefile" id="picklefile" accept=".pkl"><br><br>
+        <button type="submit">Upload</button>
+    </form>
+
+    <!-- Affichage d'un message en cas d'erreur ou de succès -->
+    {% if message %}
+    <p>{{ message }}</p>
+    {% endif %}
+</body>
+</html>

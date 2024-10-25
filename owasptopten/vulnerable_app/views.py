@@ -1,3 +1,4 @@
+import pickle
 from io import BytesIO
 from lxml import etree
 from django.http import HttpResponse
@@ -84,5 +85,15 @@ def upload_xml_vulnerable(request):
     return render(request, 'upload_xml.html')
 
 
-def config_vulnerable(request):
-    return render(request, 'config_vulnerable.html')
+def insecure_deserialization_vulnerable(request):
+    if request.method == 'POST' and request.FILES.get('picklefile'):
+        pickle_file = request.FILES['picklefile']
+        try:
+            # Charger les données sans vérification
+            data = pickle.load(pickle_file)
+            return HttpResponse(f'Pickle data processed: {data}')
+
+        except Exception as e:
+            return HttpResponse(f"An error occurred: {str(e)}", status=500)
+
+    return render(request, 'insecure_deserialization_vulnerable.html')

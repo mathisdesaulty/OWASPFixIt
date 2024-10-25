@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>vulnerabilities OWASP - Vulnerable version</title>
+    <title>Vulnerabilities OWASP - Fixed version</title>
 </head>
 <body>
-    <h1>vulnerabilities OWASP - Vulnerable version</h1>
+    <h1>Vulnerabilities OWASP - Fixed version</h1>
     <button onclick="location.href='{% url 'sql_injection_fixed' %}'">Injection SQL</button>
     <button onclick="location.href='{% url 'xss_fixed' %}'">Cross-Site Scripting (XSS)</button>
     <button onclick="location.href='{% url 'sensitive_data_fixed' %}'">Sensitive Data Exposure</button>
     <button onclick="location.href='{% url 'upload_xml_fixed' %}'">XXE</button>
-    <button onclick="location.href='{% url 'config_fixed' %}'">Security Misconfiguration</button>
+    <button onclick="location.href='{% url 'insecure_deserialization_fixed' %}'">Insecure Deserialization</button>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE foo [
-  <!ENTITY xxe "this is texte but we can upload or see a file">  <!-- Chemin correct -->
+  <!ENTITY xxe "this is texte but we can upload or see a file">  
 ]>
 <foo>&xxe;</foo>

@@ -5,11 +5,11 @@
     <title>vulnerabilities OWASP - Vulnerable version</title>
 </head>
 <body>
-    <h1>vulnerabilities OWASP - Vulnerable version</h1>
+    <h1>Vulnerabilities OWASP - Vulnerable version</h1>
     <button onclick="location.href='{% url 'sql_injection_vulnerable' %}'">Injection SQL</button>
     <button onclick="location.href='{% url 'xss_vulnerable' %}'">Cross-Site Scripting (XSS)</button>
     <button onclick="location.href='{% url 'sensitive_data_vulnerable' %}'">Sensitive Data Exposure</button>
     <button onclick="location.href='{% url 'upload_xml_vulnerable' %}'">XXE</button>
-    <button onclick="location.href='{% url 'config_vulnerable' %}'">Security Misconfiguration</button>
+    <button onclick="location.href='{% url 'insecure_deserialization_vulnerable' %}'">Insecure Deserialization</button>
 </body>
 </html>

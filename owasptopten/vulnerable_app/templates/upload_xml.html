@@ -5,7 +5,7 @@
     <title>Upload XML File</title>
 </head>
 <body>
-    <h2>Upload a malicious XML</h2>
+    <h2>Welcome to the Vulnerable App - XXE</h2>
     <p>Try to upload the same XML files, there is two XML files, one, malicious, can contain malicious entities and the other one, safe, with just a message.</p>
     <form action="{% url 'upload_xml_vulnerable' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
