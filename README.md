@@ -18,7 +18,7 @@ This Django project has been designed to demonstrate common security vulnerabili
 Make sure you have Python and pip installed on your machine. Clone the repository and install the dependencies:
 
 ```bash
-git clone https://github.com/yourusername/your-repo.git
+git clone https://github.com/mathisdesaulty/your-repo.git
 cd your-repo
 pip install -r requirements.txt
 ```
