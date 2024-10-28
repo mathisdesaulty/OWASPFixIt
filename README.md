@@ -37,4 +37,5 @@ Access the application in your browser at: http://127.0.0.1:8000/
 - XSS: Demonstration of Cross-Site Scripting vulnerability.
 - Sensitive Data Exposure: Scenarios where sensitive data may be exposed.
 - Insecure Deserialization: Examples using pickle and how to mitigate attacks.
+- XXE: Demonstration of XML External Entity attacks and how to prevent them.
 
