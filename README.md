@@ -33,8 +33,8 @@ Access the application in your browser at: http://127.0.0.1:8000/
 ## Features
 ### Demonstration of Vulnerabilities:
 
-SQL Injection: Examples of vulnerable SQL queries.
-XSS: Demonstration of Cross-Site Scripting vulnerability.
-Sensitive Data Exposure: Scenarios where sensitive data may be exposed.
-Insecure Deserialization: Examples using pickle and how to mitigate attacks.
+- SQL Injection: Examples of vulnerable SQL queries.
+- XSS: Demonstration of Cross-Site Scripting vulnerability.
+- Sensitive Data Exposure: Scenarios where sensitive data may be exposed.
+- Insecure Deserialization: Examples using pickle and how to mitigate attacks.
 
