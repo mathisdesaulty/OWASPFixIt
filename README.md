@@ -38,9 +38,3 @@ XSS: Demonstration of Cross-Site Scripting vulnerability.
 Sensitive Data Exposure: Scenarios where sensitive data may be exposed.
 Insecure Deserialization: Examples using pickle and how to mitigate attacks.
 
-### Additional Notes
-
-- Make sure to replace the placeholder `yourusername` and `your-repo` in the GitHub clone command with your actual GitHub username and repository name.
-- You can also add more sections or modify existing ones based on your project's specifics or additional features you want to highlight. 
-
-Feel free to reach out if you need any further modifications or additional information!
