@@ -18,8 +18,8 @@ This Django project has been designed to demonstrate common security vulnerabili
 Make sure you have Python and pip installed on your machine. Clone the repository and install the dependencies:
 
 ```bash
-git clone https://github.com/mathisdesaulty/your-repo.git
-cd your-repo
+git clone https://github.com/mathisdesaulty/OWASPFixIt.git
+cd OWASPFixIt
 pip install -r requirements.txt
 python manage.py makemigration
 python manage.py migrate
