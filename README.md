@@ -21,6 +21,8 @@ Make sure you have Python and pip installed on your machine. Clone the repositor
 git clone https://github.com/mathisdesaulty/your-repo.git
 cd your-repo
 pip install -r requirements.txt
+python manage.py makemigration
+python manage.py migrate
 ```
 
 ### Run the Server
