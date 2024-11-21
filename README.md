@@ -19,7 +19,7 @@ Make sure you have Python and pip installed on your machine. Clone the repositor
 
 ```bash
 git clone https://github.com/mathisdesaulty/OWASPFixIt.git
-cd OWASPFixIt
+cd OWASPFixIt/owasptopten
 pip install -r requirements.txt
 python manage.py makemigration
 python manage.py migrate
