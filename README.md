@@ -25,6 +25,13 @@ python manage.py makemigration
 python manage.py migrate
 ```
 
+You also have to create a super user:
+```bash
+python manage.py createsuperuser
+```
+He is going to be usefull for one flaw.
+
+
 ### Run the Server
 Start the Django development server:
 ```bash
